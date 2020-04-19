@@ -1,0 +1,6 @@
+---
+- name: Set authorized keys taken from url
+  authorized_key:
+    user: pi
+    state: present
+    key: https://raw.githubusercontent.com/enrikiko/raspberry/master/inventory/pubic_key
