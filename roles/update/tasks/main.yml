@@ -1,12 +1,20 @@
 ---
 - name: Update apt
-  shell: sudo apt update
+  shell: apt update
+  become: yes
+  become_user: root
 
 - name: Upgrade apt
-  shell: sudo apt upgrade
+  shell: apt upgrade
+  become: yes
+  become_user: root
 
 - name: Update apt-get
-  shell: sudo apt-get update
+  shell: apt-get update
+  become: yes
+  become_user: root
 
 - name: Upgrade apt-get
-  shell: sudo apt-get upgrade
+  shell: apt-get upgrade
+  become: yes
+  become_user: root
