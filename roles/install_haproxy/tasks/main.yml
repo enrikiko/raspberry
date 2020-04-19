@@ -1,0 +1,5 @@
+---
+- name: Install dependencies
+  shell: apt-get install -y nginx apache2-utils letsencrypt
+  become: yes
+  become_user: root
