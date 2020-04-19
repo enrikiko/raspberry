@@ -16,7 +16,7 @@
 
 - name: Upgrade apt-get
   shell: apt-get -y upgrade
-  arg:
+  args:
     warn: false
   become: yes
   become_user: root
