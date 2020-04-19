@@ -11,6 +11,8 @@
 
 - name: Update apt-get
   shell: apt-get -y update
+  args:
+    warn: false
   become: yes
   become_user: root
 
