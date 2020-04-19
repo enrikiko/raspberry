@@ -1,5 +1,5 @@
 ---
 - name: Install dependencies
-  shell: apt install xrdp tightvncserver
+  shell: apt install -y xrdp tightvncserver
   become: yes
   become_user: root

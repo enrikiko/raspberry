@@ -1,5 +1,5 @@
 ---
 - name: Install dependencies
-  shell: apt-get install openjdk-11-jdk
+  shell: apt-get install -y openjdk-11-jdk
   become: yes
   become_user: root
