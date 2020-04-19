@@ -1,2 +1,2 @@
 [raspberry]
-raspberry_1 ansible_host=raspberrypi.local ansible_connection=ssh ansible_user="pi" ansible_ssh_pass="raspberry" host_key_checking = False
+raspberry_1 ansible_host=raspberrypi.local ansible_connection=ssh ansible_user="pi" ansible_ssh_pass="raspberry" ansible_host_key_checking = False
