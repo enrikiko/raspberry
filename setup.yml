@@ -1,0 +1,9 @@
+---
+- name: Set up new Raspberry
+  roles:
+    - role: connect
+    #- role: set_ip
+    - role: update
+    - role: install_remote_desktop
+    - role: install_docker
+    - role: install_java

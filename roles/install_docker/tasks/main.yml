@@ -1,0 +1,9 @@
+---
+- name: Download docker
+  shell: curl -sSL https://get.docker.com | sh
+
+- name: Fix permision
+  shell: sudo usermod -aG docker $USER
+
+- name: Restart docker
+  shell: sudo service docker restart

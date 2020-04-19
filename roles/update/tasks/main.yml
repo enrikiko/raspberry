@@ -1,0 +1,12 @@
+---
+- name: Update apt
+  shell: sudo apt update
+
+- name: Upgrade apt
+  shell: sudo apt upgrade
+
+- name: Update apt-get
+  shell: sudo apt-get update
+
+- name: Upgrade apt-get
+  shell: sudo apt-get upgrade
