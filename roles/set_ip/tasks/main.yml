@@ -1,0 +1,5 @@
+---
+- name: copy upstart script
+  template:
+    src: ./templates/dhcpcd.conf.j2
+    dest: "/etc/dhcpcd.conf"
