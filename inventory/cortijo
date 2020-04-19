@@ -1,2 +1,4 @@
 [raspberry]
-raspberry_1 ansible_host=192.169.1.53 ansible_connection=ssh ansible_user="pi"
+raspberry_1 ansible_host=raspberrypi.local ansible_connection=ssh ansible_user="pi" ansible_ssh_pass="raspberry"
+[defaults]
+host_key_checking = False
