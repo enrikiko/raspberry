@@ -3,7 +3,7 @@
   roles:
     - role: connect
     - role: update
-    - role: copy_public_key
+    # - role: copy_public_key
     # - role: install_remote_desktop
     # - role: install_docker
     # - role: install_java

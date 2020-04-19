@@ -1,2 +1,2 @@
 [raspberry]
-raspberry ansible_host=192.169.1.53 ansible_connection=ssh ansible_user="pi"
+raspberry_1 ansible_host=192.169.1.53 ansible_connection=ssh ansible_user="pi"
