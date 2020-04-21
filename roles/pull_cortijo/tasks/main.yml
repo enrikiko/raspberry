@@ -1,0 +1,10 @@
+---
+- name: Download repository
+  git:
+    repo: https://github.com/enrikiko/cortijo.git
+    dest: /home/pi/cortijo
+
+- name: Start services
+  shell:
+    cmd: docker-compose up -d
+    chdir: cortijo/deployment/

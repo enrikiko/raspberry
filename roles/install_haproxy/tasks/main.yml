@@ -1,5 +1,10 @@
 ---
 - name: Install dependencies
-  shell: apt-get install -y nginx apache2-utils letsencrypt
+  shell: apt-get install -y haproxy
   become: yes
   become_user: root
+
+# - name: Create https certification
+#   shell: certbot -d app.cortijodemazas.com --manual --preferred-challenges dns certonly
+#   become: yes
+#   become_user: root

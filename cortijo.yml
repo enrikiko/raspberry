@@ -1,0 +1,6 @@
+---
+- name: Install cortijo in Raspberry
+  hosts: raspberry-remotly
+  roles:
+    - role: connect
+    - role: pull_cortijo
