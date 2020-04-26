@@ -4,7 +4,17 @@
   become: yes
   become_user: root
 
-# - name: Create https certification
-#   shell: certbot -d app.cortijodemazas.com --manual --preferred-challenges dns certonly
-#   become: yes
-#   become_user: root
+- name: Copy haproxy
+  template:
+    src: ./templates/haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    owner: root
+    group: root
+    mode: '0766'
+  become: yes
+  become_user: root
+
+- name: Restart haproxy
+  shell: service haproxy restart
+  become: yes
+  become_user: root
