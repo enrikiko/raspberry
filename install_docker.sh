@@ -3,4 +3,4 @@ echo $1
 export ANSIBLE_HOST_KEY_CHECKING=False
 ansible-playbook -i ./inventory/cortijo \
 install_docker.yml \
--e ip="192.168.1.43"
+-e ip=${1}
