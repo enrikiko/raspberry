@@ -39,9 +39,10 @@ frontend Local_Server
   mode http
 
   acl VHOST_cortijo_public req.hdr(Host) -i -m dom public.cortijodemazas.com
-  acl VHOST_cortijo_public req.hdr(Host) -i -m dom www.cortijodemazas.com
+  acl VHOST_cortijo_app req.hdr(Host) -i -m dom www.cortijodemazas.com
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom app.cortijodemazas.com
   acl VHOST_cortijo_pi req.hdr(Host) -i -m dom pi.cortijodemazas.com
+  acl VHOST_cortijo_app req.hdr(Host) -i -m dom cortijodemazas.com
 
   acl VHOST_jenkins req.hdr(Host) -i -m dom jenkins.cortijodemazas.com
 
