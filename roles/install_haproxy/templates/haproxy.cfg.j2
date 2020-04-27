@@ -54,7 +54,6 @@ frontend Local_Server
   use_backend cortijo_app_back if VHOST_cortijo_app PATH_back
   use_backend cortijo_app_front if VHOST_cortijo_app
   use_backend cortijo_public if VHOST_cortijo_public
-  use_backend cortijo_pi if VHOST_cortijo_pi
   use_backend afro_app if VHOST_afro
 
   default_backend default_app
