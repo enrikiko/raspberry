@@ -3,3 +3,6 @@ raspberry_1 ansible_host=raspberrypi.local ansible_connection=ssh ansible_user="
 
 [raspberry-remotly]
 raspberry_1 ansible_host=88.7.68.42 ansible_port=3388 ansible_connection=ssh ansible_user="pi" ansible_become=true
+
+[dynamic]
+dynamic ansible_host=192.168.1.43 ansible_port=22 ansible_connection=ssh ansible_user="miso" ansible_become=true

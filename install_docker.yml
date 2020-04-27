@@ -1,6 +1,6 @@
 ---
 - name: Install docker
-  hosts: raspberry
+  hosts: dynamic
   roles:
     - role: connect
     - role: update
