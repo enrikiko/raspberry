@@ -39,26 +39,23 @@ frontend Local_Server
   mode http
 
   acl VHOST_cortijo_public req.hdr(Host) -i -m dom public.cortijodemazas.com
+  acl VHOST_jenkins req.hdr(Host) -i -m dom jenkins.cortijodemazas.com
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom www.cortijodemazas.com
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom app.cortijodemazas.com
-  acl VHOST_cortijo_pi req.hdr(Host) -i -m dom pi.cortijodemazas.com
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom cortijodemazas.com
-
-  acl VHOST_jenkins req.hdr(Host) -i -m dom jenkins.cortijodemazas.com
 
   acl VHOST_afro req.hdr(Host) -i -m dom app.appafrodita.com
   acl VHOST_afro req.hdr(Host) -i -m dom appafrodita.com
-  acl VHOST_afro req.hdr(Host) -i -m dom ww.appafrodita.com
+  acl VHOST_afro req.hdr(Host) -i -m dom www.appafrodita.com
 
   acl PATH_back path_beg -i /device
   #acl PATH_back path_beg -i /back
-
+  use_backend api_jenkins if VHOST_jenkins
   use_backend cortijo_app_back if VHOST_cortijo_app PATH_back
   use_backend cortijo_app_front if VHOST_cortijo_app
   use_backend cortijo_public if VHOST_cortijo_public
   use_backend cortijo_pi if VHOST_cortijo_pi
   use_backend afro_app if VHOST_afro
-  use_backend api_jenkins if VHOST_jenkins
 
   default_backend default_app
 
@@ -83,12 +80,6 @@ backend cortijo_public
   server public_1 {{ ip }}:8301 check
   server public_2 {{ ip }}:8302 check
 
-backend cortijo_pi
-  balance roundrobin
-  option forwardfor
-  server public_1 192.168.1.53:3389 check
-  server public_2 192.168.1.54:3389 check
-
 backend api_jenkins
   mode http
   server jenkins {{ ip }}:8080 check
@@ -99,4 +90,4 @@ backend afro_app
 
 backend default_app
   mode http
-  server server1 {{ ip }}:8000 check
+  server server1 {{ ip }}:8300 check
