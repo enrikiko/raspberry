@@ -2,7 +2,7 @@
 - name: Install docker
   hosts: dynamic
   roles:
-    - role: connect
+    #- role: connect
     - role: update
     - role: install_pip3
     - role: install_docker
