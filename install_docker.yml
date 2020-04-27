@@ -1,0 +1,8 @@
+---
+- name: Install docker
+  hosts: raspberry
+  roles:
+    - role: connect
+    - role: update
+    - role: install_pip3
+    - role: install_docker

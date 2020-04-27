@@ -1,0 +1,5 @@
+---
+- name: Install pip3
+  shell: apt install -y pip3
+  become: yes
+  become_user: root
