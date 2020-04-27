@@ -1,6 +1,6 @@
 [raspberry]
-raspberry_1 ansible_host=raspberrypi ansible_connection=ssh ansible_user="pi" ansible_ssh_pass="misomiso" ansible_become=true
+raspberry_1 ansible_host=raspberrypi.local ansible_connection=ssh ansible_user="pi" ansible_ssh_pass="misomiso"
 [raspberry-remotly]
-raspberry_1 ansible_host=88.7.68.42 ansible_port=3388 ansible_connection=ssh ansible_user="pi" ansible_become=true
+raspberry_1 ansible_host=88.7.68.42 ansible_port=3388 ansible_connection=ssh ansible_user="pi"
 [dynamic]
-dynamic ansible_host={{ ip }} ansible_port=22 ansible_connection=ssh ansible_user="miso" ansible_become=true
+dynamic ansible_host={{ ip }} ansible_port=22 ansible_connection=ssh ansible_user="miso"
