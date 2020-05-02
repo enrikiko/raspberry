@@ -43,10 +43,13 @@ frontend Local_Server
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom www.cortijodemazas.com
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom app.cortijodemazas.com
   acl VHOST_cortijo_app_back req.hdr(Host) -i -m dom back.app.cortijodemazas.com
-  acl VHOST_cortijo_app req.hdr(Host) -i -m dom cortijodemazas.com
 
   acl VHOST_cortijo_camera_1 req.hdr(Host) -i -m dom camera1.cortijodemazas.com
   acl VHOST_cortijo_camera_2 req.hdr(Host) -i -m dom camera2.cortijodemazas.com
+
+
+  acl VHOST_cortijo_app req.hdr(Host) -i -m dom cortijodemazas.com
+
 
   acl VHOST_afro req.hdr(Host) -i -m dom app.appafrodita.com
   acl VHOST_afro req.hdr(Host) -i -m dom appafrodita.com
@@ -59,7 +62,7 @@ frontend Local_Server
   use_backend cortijo_app_front if VHOST_cortijo_app
   use_backend cortijo_public if VHOST_cortijo_public
   use_backend cortijo_camera_1 if VHOST_cortijo_camera_1
-  use_backend cortijo_camera_1 if VHOST_cortijo_camera_2
+  use_backend cortijo_camera_2 if VHOST_cortijo_camera_2
   use_backend afro_app if VHOST_afro
 
   default_backend default_app
@@ -99,8 +102,8 @@ backend default_app
 
 backend cortijo_camera_1
   mode http
-  server camera1 88.8.36.129:9981
+  server camera1 192.168.1.45:9982
 
 backend cortijo_camera_2
   mode http
-  server camera1 88.8.36.129:9983
+  server camera1 192.168.1.60:9983
