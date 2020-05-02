@@ -51,7 +51,6 @@ frontend Local_Server
 
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom cortijodemazas.com
 
-
   acl VHOST_afro req.hdr(Host) -i -m dom app.appafrodita.com
   acl VHOST_afro req.hdr(Host) -i -m dom appafrodita.com
   acl VHOST_afro req.hdr(Host) -i -m dom www.appafrodita.com
@@ -67,16 +66,16 @@ frontend Local_Server
   use_backend cortijo_camera_2 if VHOST_cortijo_camera_2
   use_backend afro_app if VHOST_afro
 
-  default_backend default_app
+  #default_backend default_app
 
 backend cortijo_app_front
   mode http
-  balance roundrobin
-  option forwardfor
+  #balance roundrobin
+  #option forwardfor
   #http-request set-header X-Forwarded-Port %[dst_port]
   #http-request add-header X-Forwarded-Proto https if { ssl_fc }
   #option httpchk HEAD / HTTP/1.1rnHost:localhost
-  http-request set-header Host localhost
+  #http-request set-header Host localhost
   server front {{ ip }}:8300 check
 
 backend cortijo_app_back
@@ -96,7 +95,7 @@ backend api_jenkins
 
 backend afro_app
   mode http
-  server app.cortijodemazas.com {{ ip }}:8990 check
+  server afro {{ ip }}:8990 check
 
 backend cortijo_camera_1
   mode http
@@ -104,12 +103,11 @@ backend cortijo_camera_1
 
 backend cortijo_camera_2
   mode http
-  server camera1 192.168.1.60 check
+  server camera2 192.168.1.60 check
 
 backend router
   mode http
   server router 192.168.1.1 check
-
 
 backend default_app
   mode http
