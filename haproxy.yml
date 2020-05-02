@@ -1,5 +1,5 @@
 ---
 - name: Set up new Raspberry
-  hosts: raspberry
+  hosts: dynamic
   roles:
     - role: install_haproxy
