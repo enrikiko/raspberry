@@ -1,0 +1,5 @@
+---
+- name: Run link
+  hosts: bali
+  roles:
+    - role: link

@@ -1,0 +1,20 @@
+---
+- name: pull later chnages
+  git:
+    repo: 'https://github.com/enrikiko/link'
+    dest: /home/miso/Documents/link
+    update: yes
+
+- name: Build image
+  docker_image:
+    build:
+      path: /home/miso/Documents/link
+    name: link
+    tag: "{{ BUILD_TAG }}"
+    args:
+      USER_NAME: "{{ USER_NAME }}"
+      USER_PASSWORD: "{{ USER_PASSWORD }}"
+      CITY: "{{ CITY }}"
+      JOB_TITLE: "{{ JOB_TITLE }}"
+      BLACK_LIST: "{{ BLACK_LIST }}"
+    source: build
