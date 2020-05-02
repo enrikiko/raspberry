@@ -1,11 +1,11 @@
 [japan]
-raspberry_1 ansible_host=192.168.1.53 ansible_port=22 ansible_connection=ssh ansible_user="pi"   ansible_become=true
+japan ansible_host=192.168.1.53 ansible_port=22 ansible_connection=ssh ansible_user="pi"   ansible_become=true
 
 [bali]
-raspberry_1 ansible_host=192.168.1.50 ansible_port=22 ansible_connection=ssh ansible_user="miso" ansible_become=true
+bali ansible_host=192.168.1.50 ansible_port=22 ansible_connection=ssh ansible_user="miso" ansible_become=true
 
-[bali]
-raspberry_1 ansible_host=192.168.1.43 ansible_port=22 ansible_connection=ssh ansible_user="miso" ansible_become=true
+[santorini]
+santorini ansible_host=192.168.1.43 ansible_port=22 ansible_connection=ssh ansible_user="miso" ansible_become=true
 
 [dynamic]
 dynamic ansible_host="{{ haproxy_ip }}" ansible_port=22 ansible_connection=ssh ansible_user="pi" ansible_ssh_pass="{{ password }}" ansible_become=true
