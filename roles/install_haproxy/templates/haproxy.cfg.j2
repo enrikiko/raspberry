@@ -58,6 +58,7 @@ frontend Local_Server
 
   # acl PATH_back path_beg -i /device
   # acl PATH_back path_beg -i /back
+  use_backend router if VHOST_router
   use_backend api_jenkins if VHOST_jenkins
   use_backend cortijo_app_back if VHOST_cortijo_app_back
   use_backend cortijo_app_front if VHOST_cortijo_app
@@ -65,7 +66,6 @@ frontend Local_Server
   use_backend cortijo_camera_1 if VHOST_cortijo_camera_1
   use_backend cortijo_camera_2 if VHOST_cortijo_camera_2
   use_backend afro_app if VHOST_afro
-  use_backend router if VHOST_router
 
   default_backend default_app
 
@@ -98,18 +98,19 @@ backend afro_app
   mode http
   server app.cortijodemazas.com {{ ip }}:8990 check
 
-backend default_app
-  mode http
-  server server1 {{ ip }}:8300 check
-
 backend cortijo_camera_1
   mode http
-  server camera1 192.168.1.45:9982 check
+  server camera1 192.168.1.45 check
 
 backend cortijo_camera_2
   mode http
-  server camera1 192.168.1.60:1935 check
+  server camera1 192.168.1.60 check
 
 backend router
   mode http
   server router 192.168.1.1 check
+
+
+backend default_app
+  mode http
+  server server1 {{ ip }}:8300 check
