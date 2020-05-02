@@ -8,4 +8,4 @@ raspberry_1 ansible_host=192.168.1.50 ansible_port=22 ansible_connection=ssh ans
 raspberry_1 ansible_host=192.168.1.43 ansible_port=22 ansible_connection=ssh ansible_user="miso" ansible_become=true
 
 [dynamic]
-dynamic ansible_host="{{ ip }}" ansible_port=22 ansible_connection=ssh ansible_user="miso" ansible_ssh_pass="{{ password }}" ansible_become=true
+dynamic ansible_host="{{ haproxy_ip }}" ansible_port=22 ansible_connection=ssh ansible_user="miso" ansible_ssh_pass="{{ password }}" ansible_become=true
