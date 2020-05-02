@@ -102,8 +102,8 @@ backend default_app
 
 backend cortijo_camera_1
   mode http
-  server camera1 192.168.1.45:9982
+  server camera1 192.168.1.45:9982 check
 
 backend cortijo_camera_2
   mode http
-  server camera1 192.168.1.60:9983
+  server camera1 192.168.1.60:1935 check
