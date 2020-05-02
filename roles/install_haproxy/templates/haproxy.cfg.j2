@@ -42,16 +42,17 @@ frontend Local_Server
   acl VHOST_jenkins req.hdr(Host) -i -m dom jenkins.cortijodemazas.com
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom www.cortijodemazas.com
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom app.cortijodemazas.com
+  acl VHOST_cortijo_app_back req.hdr(Host) -i -m dom back.app.cortijodemazas.com
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom cortijodemazas.com
 
   acl VHOST_afro req.hdr(Host) -i -m dom app.appafrodita.com
   acl VHOST_afro req.hdr(Host) -i -m dom appafrodita.com
   acl VHOST_afro req.hdr(Host) -i -m dom www.appafrodita.com
 
-  acl PATH_back path_beg -i /device
-  #acl PATH_back path_beg -i /back
+  # acl PATH_back path_beg -i /device
+  # acl PATH_back path_beg -i /back
   use_backend api_jenkins if VHOST_jenkins
-  use_backend cortijo_app_back if VHOST_cortijo_app PATH_back
+  use_backend cortijo_app_back if VHOST_cortijo_app_back
   use_backend cortijo_app_front if VHOST_cortijo_app
   use_backend cortijo_public if VHOST_cortijo_public
   use_backend afro_app if VHOST_afro
@@ -70,7 +71,7 @@ backend cortijo_app_front
 
 backend cortijo_app_back
   mode http
-  server app.cortijodemazas.com {{ ip }}:8000 check
+  server back {{ ip }}:8000 check
 
 backend cortijo_public
   mode http
@@ -90,3 +91,11 @@ backend afro_app
 backend default_app
   mode http
   server server1 {{ ip }}:8300 check
+
+backend camera_1
+  mode http
+  server camera1 88.8.36.129:9981
+
+backend camera_2
+  mode http
+  server camera1 88.8.36.129:9983
