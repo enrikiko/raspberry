@@ -114,11 +114,11 @@ backend cortijo_camera_2
 
 backend cortijo_camera
   mode http
-  server camera 192.168.1.50:8400 check
+  server camera {{ ip }}:8400 check
 
 backend cortijo_file
   mode http
-  server file 192.168.1.50:8500 check
+  server file {{ ip }}:8500 check
 
 backend router
   mode http
