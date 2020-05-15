@@ -49,6 +49,7 @@ frontend Local_Server
   acl VHOST_cortijo_file req.hdr(Host) -i -m dom file.cortijodemazas.com
   acl VHOST_router req.hdr(Host) -i -m dom router.cortijodemazas.com
   acl VHOST_gitlab req.hdr(Host) -i -m dom gitlab.cortijodemazas.com
+  acl VHOST_vpn req.hdr(Host) -i -m dom vpn.cortijodemazas.com
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom cortijodemazas.com
   acl VHOST_afro req.hdr(Host) -i -m dom app.appafrodita.com
   acl VHOST_afro req.hdr(Host) -i -m dom appafrodita.com
@@ -61,6 +62,7 @@ frontend Local_Server
   use_backend cortijo_camera if VHOST_cortijo_camera
   use_backend cortijo_file if VHOST_cortijo_file
   use_backend api_jenkins if VHOST_jenkins
+  use_backend api_vpn if VHOST_vpn
   use_backend cortijo_app_back if VHOST_cortijo_app_back
   use_backend cortijo_app_front if VHOST_cortijo_app
   use_backend cortijo_public if VHOST_cortijo_public
@@ -95,6 +97,10 @@ backend api_jenkins
   mode http
   server jenkins {{ ip }}:8080 check
 
+backend api_vpn
+  mode http
+  server vpn {{ haproxy_ip }}:11911 check
+
 backend afro_app
   mode http
   server afro {{ ip }}:8990 check
@@ -121,7 +127,7 @@ backend router
 
 backend gitlab
   mode http
-  server gitlab {{ ip }}:8600 check
+  server gitlab {{ haproxy_ip }}:8080 check
 
 #backend default_app
 #  mode http
