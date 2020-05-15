@@ -127,7 +127,7 @@ backend router
 
 backend gitlab
   mode http
-  server gitlab {{ haproxy_ip }}:8080 check
+  server gitlab {{ ip }}:8600 check
 
 #backend default_app
 #  mode http
