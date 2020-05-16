@@ -49,6 +49,7 @@ frontend Local_Server
   acl VHOST_cortijo_file req.hdr(Host) -i -m dom file.cortijodemazas.com
   acl VHOST_router req.hdr(Host) -i -m dom router.cortijodemazas.com
   acl VHOST_gitlab req.hdr(Host) -i -m dom gitlab.cortijodemazas.com
+  acl VHOST_dockerhub req.hdr(Host) -i -m dom dockerhub.cortijodemazas.com
   acl VHOST_vpn req.hdr(Host) -i -m dom vpn.cortijodemazas.com
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom cortijodemazas.com
   acl VHOST_afro req.hdr(Host) -i -m dom app.appafrodita.com
@@ -59,6 +60,7 @@ frontend Local_Server
   # acl PATH_back path_beg -i /back
   use_backend router if VHOST_router
   use_backend gitlab if VHOST_gitlab
+  use_backend dockerhub if VHOST_dockerhub
   use_backend cortijo_camera if VHOST_cortijo_camera
   use_backend cortijo_file if VHOST_cortijo_file
   use_backend api_jenkins if VHOST_jenkins
@@ -128,6 +130,10 @@ backend router
 backend gitlab
   mode http
   server gitlab 192.168.1.43:80 check
+
+backend dockerhub
+  mode http
+  server dockerhub 192.168.1.43:5000 check
 
 #backend default_app
 #  mode http
