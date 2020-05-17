@@ -50,7 +50,7 @@ frontend Local_Server
   acl VHOST_router req.hdr(Host) -i -m dom router.cortijodemazas.com
   acl VHOST_gitlab req.hdr(Host) -i -m dom gitlab.cortijodemazas.com
   acl VHOST_dockerhub req.hdr(Host) -i -m dom dockerhub.cortijodemazas.com
-  acl VHOST_couchebase req.hdr(Host) -i -m dom couchebase.cortijodemazas.com
+  acl VHOST_couchbase req.hdr(Host) -i -m dom couchbase.cortijodemazas.com
   acl VHOST_vpn req.hdr(Host) -i -m dom vpn.cortijodemazas.com
   acl VHOST_cortijo_app req.hdr(Host) -i -m dom cortijodemazas.com
   acl VHOST_afro req.hdr(Host) -i -m dom app.appafrodita.com
@@ -62,7 +62,7 @@ frontend Local_Server
   use_backend router if VHOST_router
   use_backend gitlab if VHOST_gitlab
   use_backend dockerhub if VHOST_dockerhub
-  use_backend couchebase if VHOST_couchebase
+  use_backend couchbase if VHOST_couchbase
   use_backend cortijo_camera if VHOST_cortijo_camera
   use_backend cortijo_file if VHOST_cortijo_file
   use_backend api_jenkins if VHOST_jenkins
@@ -137,9 +137,9 @@ backend dockerhub
   mode http
   server dockerhub1 192.168.1.43:5000 check
 
-backend couchebase
+backend couchbase
   mode http
-  server couchebase1 192.168.1.43:8091 check
+  server couchbase1 192.168.1.43:8091 check
 
 #backend default_app
 #  mode http
