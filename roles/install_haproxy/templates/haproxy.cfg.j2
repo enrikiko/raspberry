@@ -142,6 +142,7 @@ backend dockerhub
 backend couchbase
   mode http
   server couchbase1 192.168.1.43 check
+  server couchbaseui1 192.168.1.43:8091 check
 
 backend couchbaseui
   mode http
