@@ -59,10 +59,12 @@ frontend Local_Server
 
   # acl PATH_back path_beg -i /device
   # acl PATH_back path_beg -i /back
+  acl PATH_ui path_beg -i /ui
   use_backend router if VHOST_router
   use_backend gitlab if VHOST_gitlab
   use_backend dockerhub if VHOST_dockerhub
   use_backend couchbase if VHOST_couchbase
+  use_backend couchbaseui if VHOST_couchbase and PATH_ui
   use_backend cortijo_camera if VHOST_cortijo_camera
   use_backend cortijo_file if VHOST_cortijo_file
   use_backend api_jenkins if VHOST_jenkins
@@ -139,7 +141,11 @@ backend dockerhub
 
 backend couchbase
   mode http
-  server couchbase1 192.168.1.43:8091 check
+  server couchbase1 192.168.1.43 check
+
+backend couchbaseui
+  mode http
+  server couchbaseui1 192.168.1.43:8091 check
 
 #backend default_app
 #  mode http
