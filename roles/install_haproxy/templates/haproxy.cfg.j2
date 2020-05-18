@@ -59,7 +59,7 @@ frontend Local_Server
 
   # acl PATH_back path_beg -i /device
   # acl PATH_back path_beg -i /back
-  acl PATH_ui path_beg -i /ui
+  acl PATH_ui path_beg -i /ui/index.html
   use_backend router if VHOST_router
   use_backend gitlab if VHOST_gitlab
   use_backend dockerhub if VHOST_dockerhub
