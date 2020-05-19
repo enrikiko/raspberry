@@ -84,11 +84,11 @@ backend cortijo_app_front
   #http-request add-header X-Forwarded-Proto https if { ssl_fc }
   #option httpchk HEAD / HTTP/1.1rnHost:localhost
   #http-request set-header Host localhost
-  server front {{ ip }}:8300 check
+  server front {{ haproxy_ip }}:8300 check
 
 backend cortijo_app_back
   mode http
-  server back {{ ip }}:8000 check
+  server back {{ haproxy_ip }}:8000 check
 
 backend cortijo_public
   mode http
